@@ -55,7 +55,10 @@ def main():
     print "Scanning profiles " + str(profiles) + " for access id " + accesskeyid + ' ...\n'
 
     for profile in profiles:
-        access_keys(profile,accesskeyid)
+        try:
+            access_keys(profile, accesskeyid)
+        except Exception,e:
+            print 'ERROR: Lack of permissions to access AWS IAM for account ' + profile + ' .'
 
 if __name__ == '__main__':
     main()
